@@ -1,9 +1,9 @@
-package control.test;
+package thread.control.test;
 
 import static util.MyLogger.log;
 import static util.ThreadUtils.sleep;
 
-public class JoinTest2Main {
+public class JoinTest1Main {
     public static void main(String[] args) throws InterruptedException {
 
         Thread t1 = new Thread(new MyTask(), "t1");
@@ -11,10 +11,12 @@ public class JoinTest2Main {
         Thread t3 = new Thread(new MyTask(), "t3");
 
         t1.start();
-        t2.start();
-        t3.start();
         t1.join();
+
+        t2.start();
         t2.join();
+
+        t3.start();
         t3.join();
 
         System.out.println("모든 스레드 실행 완료");
